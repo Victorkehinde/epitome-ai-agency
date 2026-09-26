@@ -58,12 +58,14 @@
     });
   }
 
-  // WhatsApp link — swap the number below when provided
-  var WHATSAPP_NUMBER = null; // e.g. "2348012345678" (no + or spaces)
+  // WhatsApp link — number is set, so #wa-link is upgraded to a click-to-chat link.
+  // If the element is not on the page, nothing happens. If JS is off, the anchor keeps
+  // its mailto fallback, so the visitor still has a way to reach us.
+  var WHATSAPP_NUMBER = "2349056969122"; // Victor Kehinde — no + or spaces
   var waLink = document.getElementById("wa-link");
   if (waLink && WHATSAPP_NUMBER) {
-    waLink.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent("Hi! I'd like to book a free automation audit.");
+    waLink.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent("Hi! I'd like to book a free audit.");
   } else if (waLink) {
-    waLink.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Free Automation Audit");
+    waLink.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Free Audit");
   }
 })();
