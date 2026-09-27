@@ -216,3 +216,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .booking__inner { grid-template-columns: 1fr; padding: 32px 24px; }
   .nav__links { display: none; }
 }
+
+
+/* ---------- PILLAR TWO SUB-HEADINGS (Websites / Apps) ---------- */
+.agents__subhead { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 14px;
+  flex-wrap: wrap; margin-top: 14px; padding-top: 26px; border-top: 1px solid var(--line); }
+.agents__subhead:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.agents__subhead h3 { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-bright); margin: 0; }
+.agents__subhead p { color: var(--muted); font-size: 14px; margin: 0; }
+.agent__links { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.agent__links .bundle__link { line-height: 1.4; }
+
+
+/* App Development gets double width so the APPS row is a deliberate full row,
+   and the heavier card carries the two PDF links without crowding. */
+.agent--wide { grid-column: span 2; }
+@media (max-width: 900px) { .agent--wide { grid-column: auto; } }
