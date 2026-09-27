@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Epitome AI Agency — AI Agents &amp; Automation for Businesses</title>
-  <meta name="description" content="Epitome AI Agency builds, deploys and manages AI agents and automation for businesses — reply to every lead in minutes, publish on schedule, and run operations without adding headcount." />
+  <title>Epitome AI Agency — AI Agents, Automation, Websites &amp; Apps</title>
+  <meta name="description" content="Epitome AI Agency builds, deploys and manages AI agents and automation for businesses — and designs, builds and launches the websites, web apps and applications they run on." />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" type="image/jpeg" href="images/epitome-logo.jpg" />
+  <!-- If JS is blocked or fails, the .reveal elements would stay invisible forever.
+       This fallback makes the page fully readable without JavaScript. -->
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -20,9 +23,10 @@
         <span>EPITOME<span class="gold">·</span>AI</span>
       </a>
       <ul class="nav__links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#agents">The Agents</a></li>
-        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#pillars">What we do</a></li>
+        <li><a href="#agents">AI Agents</a></li>
+        <li><a href="#build">Websites &amp; Apps</a></li>
+        <li><a href="#pricing">Packages</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#book" class="nav__cta">Book a free audit</a></li>
       </ul>
@@ -35,89 +39,53 @@
     <header class="hero" id="top">
       <div class="hero__bg"></div>
       <div class="hero__content">
-        <p class="hero__eyebrow reveal">AI AGENTS · AUTOMATION · GROWTH</p>
+        <p class="hero__eyebrow reveal">AI AGENTS · AUTOMATION · WEBSITES &amp; APPS</p>
         <h1 class="hero__title reveal">Put your business<br /><span class="gold">on autopilot</span></h1>
         <p class="hero__sub reveal">
-          We build, deploy and manage AI agents that <strong>reply to every lead in minutes</strong>,
-          <strong>publish your content on schedule</strong> and <strong>run your back-office</strong> —
-          so you grow without hiring more staff.
+          We build, deploy and manage the AI agents that <strong>reply to every lead in minutes</strong>
+          and <strong>run your back-office</strong> — and we design, build and launch the
+          <strong>websites and apps</strong> your business runs on. So you grow without hiring more staff.
         </p>
         <div class="hero__cta reveal">
           <a class="btn btn--gold" href="#book">Book a free automation audit</a>
-          <a class="btn btn--ghost" href="#agents">See the agents</a>
+          <a class="btn btn--ghost" href="#build">See what we build</a>
         </div>
       </div>
     </header>
 
-    <!-- ===== SERVICES / BUNDLES ===== -->
-    <section class="services" id="services">
+    <!-- ===== THE THREE PILLARS (overview) ===== -->
+    <section class="services" id="pillars">
       <div class="section-head reveal">
         <p class="section-head__eyebrow">What we do</p>
-        <h2 class="section-head__title">Three ways to automate your business</h2>
-        <p class="section-head__sub">Pick a bundle — every one is set up and managed end-to-end by us.</p>
+        <h2 class="section-head__title">Three pillars. One team.</h2>
+        <p class="section-head__sub">Everything we offer sits under one of these — and we can run any of them end-to-end for you.</p>
       </div>
 
-      <div class="bundles">
-
-        <article class="bundle reveal">
-          <div class="bundle__tag">Starter</div>
-          <h3 class="bundle__name">Ignite</h3>
-          <p class="bundle__desc">
-            Automate the tasks that leak revenue. Follow up every lead instantly,
-            let clients book themselves, and get your social presence running — hands-free.
-          </p>
-          <ul class="bundle__list">
-            <li><strong>Lead Follow-up Agent</strong> — replies to enquiries in minutes, never lets a lead go cold</li>
-            <li><strong>Booking &amp; Scheduling Agent</strong> — clients book themselves with automatic reminders</li>
-            <li><strong>Social Media Setup &amp; Optimization</strong> — profiles built and primed to convert</li>
-          </ul>
-          <a class="bundle__link" href="#pricing">See pricing ↓</a>
+      <div class="agents__grid">
+        <article class="agent reveal">
+          <h3><span class="gold">01</span> — AI Agents &amp; Automation</h3>
+          <p>The systems that answer, follow up, book, publish and report — running without you. Set up and managed month to month.</p>
+          <p style="margin-top:14px"><a class="bundle__link" href="#agents">See the agents ↓</a></p>
         </article>
-
-        <article class="bundle bundle--popular reveal">
-          <div class="bundle__badge">Most popular</div>
-          <div class="bundle__tag">Growth</div>
-          <h3 class="bundle__name">Momentum</h3>
-          <p class="bundle__desc">
-            Everything in Ignite, plus a full marketing engine: a chatbot that answers
-            day and night, email &amp; SMS that nurture on autopilot, content that never
-            stops, and pages that convert.
-          </p>
-          <ul class="bundle__list">
-            <li>✅ Everything in Ignite</li>
-            <li><strong>Customer Support Chatbot</strong> — answers 24/7 on web + WhatsApp</li>
-            <li><strong>Email &amp; SMS Automation</strong> — welcome, follow-up and win-back sequences</li>
-            <li><strong>Content Automation + Trend Monitor</strong> — consistent posts that stay on-trend</li>
-            <li><strong>Funnels &amp; Landing Pages</strong> — turn clicks into customers</li>
-          </ul>
-          <a class="bundle__link" href="#pricing">See pricing ↓</a>
+        <article class="agent reveal">
+          <h3><span class="gold">02</span> — Websites &amp; Apps</h3>
+          <p>The things your customers actually see and touch: websites built to convert, funnels, client portals, dashboards and custom apps.</p>
+          <p style="margin-top:14px"><a class="bundle__link" href="#build">See what we build ↓</a></p>
         </article>
-
-        <article class="bundle reveal">
-          <div class="bundle__tag">Scale</div>
-          <h3 class="bundle__name">Dominion</h3>
-          <p class="bundle__desc">
-            Your entire digital operation, run by us. CRM, phone reception, AI video and
-            a website — one team managing it all, month to month.
-          </p>
-          <ul class="bundle__list">
-            <li>✅ Everything in Momentum</li>
-            <li><strong>CRM &amp; Pipeline Setup</strong> — every lead organised, nothing slips through</li>
-            <li><strong>Voice / Phone Receptionist Agent</strong> — never miss a call again</li>
-            <li><strong>AI Video &amp; Faceless Channel</strong> — grow without you on camera</li>
-            <li><strong>Website Creation</strong> — designed, launched and maintained for you</li>
-          </ul>
-          <a class="bundle__link" href="#pricing">See pricing ↓</a>
+        <article class="agent reveal">
+          <h3><span class="gold">03</span> — Growth Add-ons</h3>
+          <p>Ads, brand identity, AI training and strategy audits — bolt these onto any package when you want to push harder.</p>
+          <p style="margin-top:14px"><a class="bundle__link" href="#addons">See the add-ons ↓</a></p>
         </article>
-
       </div>
     </section>
 
-    <!-- ===== THE AGENTS (detailed) ===== -->
+    <!-- ===== PILLAR ONE: AI AGENTS & AUTOMATION ===== -->
     <section class="agents" id="agents">
       <div class="section-head reveal">
-        <p class="section-head__eyebrow">What each agent actually does</p>
-        <h2 class="section-head__title">Meet the agents</h2>
+        <p class="section-head__eyebrow">Pillar one</p>
+        <h2 class="section-head__title">AI Agents &amp; Automation</h2>
+        <p class="section-head__sub">What each agent actually does — built, deployed and managed by us.</p>
       </div>
 
       <div class="agents__grid">
@@ -150,10 +118,6 @@
           <p>Nurtures leads and customers with the right message at the right time — welcome, follow-up and win-back sequences.</p>
         </article>
         <article class="agent reveal">
-          <h3>Funnels &amp; Landing Pages</h3>
-          <p>Turns clicks into customers with pages built to capture and convert — not just look pretty.</p>
-        </article>
-        <article class="agent reveal">
           <h3>CRM &amp; Pipeline Setup</h3>
           <p>Organises every lead and customer in one place, with automatic follow-ups — so nothing slips through.</p>
         </article>
@@ -161,19 +125,68 @@
           <h3>AI Video &amp; Faceless Channel</h3>
           <p>Produces video content and runs faceless channels that grow your brand — without you ever needing to be on camera.</p>
         </article>
-        <article class="agent reveal">
-          <h3>Website Creation</h3>
-          <p>A fast, modern website built to convert — designed, launched and maintained for you.</p>
-        </article>
       </div>
     </section>
 
-    <!-- ===== ADD-ONS ===== -->
+    <!-- ===== PILLAR TWO: WEBSITES & APPS ===== -->
+    <section class="agents" id="build">
+      <div class="section-head reveal">
+        <p class="section-head__eyebrow">Pillar two</p>
+        <h2 class="section-head__title">Websites &amp; Apps</h2>
+        <p class="section-head__sub">
+          The part of your business customers actually see. We design it, build it, launch it and hand it
+          over — properly finished, at a pace a traditional agency cannot match.
+        </p>
+      </div>
+
+      <div class="agents__grid">
+        <article class="agent reveal">
+          <h3>Website Creation</h3>
+          <p>A fast, modern website built to convert — not just look pretty. Designed, written, launched and handed over to you, with the pages your business actually needs: services, about, contact, testimonials.</p>
+        </article>
+        <article class="agent reveal">
+          <h3>Funnels &amp; Landing Pages</h3>
+          <p>Single-purpose pages built to capture and convert — for a launch, a paid campaign, a waitlist or a lead magnet. Wired straight into your follow-up agents.</p>
+        </article>
+        <article class="agent reveal">
+          <h3>Web Apps &amp; Client Portals</h3>
+          <p>Tools that run on the web and inside your operation: booking systems, order tracking, customer portals, internal dashboards and admin panels your team can actually use.</p>
+        </article>
+        <article class="agent reveal">
+          <h3>App Development</h3>
+          <p>Custom applications to serve your customers or run your internal operations — from a simple offline tool your field team carries with them, to a full internal system your whole operation runs on. We'll tell you honestly whether you need a native app or a web app first.</p>
+        </article>
+        <article class="agent reveal">
+          <h3><span class="gold">Not sure which you need?</span></h3>
+          <p>Tell us what your business does and what's slowing it down. We'll tell you straight whether you need a website, an app, an agent — or none of them.</p>
+          <p style="margin-top:14px"><a class="bundle__link" href="#book">Book a free audit ↓</a></p>
+        </article>
+      </div>
+
+      <div class="section-head reveal" style="margin-top:64px;margin-bottom:24px">
+        <p class="section-head__eyebrow">Track record</p>
+        <h2 class="section-head__title" style="font-size:26px">We build our own, before we build yours</h2>
+        <p class="section-head__sub">Every site, funnel and app we ship is proven inside our own operations first. If it isn't good enough for us, we don't ship it to you.</p>
+      </div>
+
+      <div class="results reveal" style="max-width:1120px">
+        <p style="color:var(--muted);font-size:15px;margin-bottom:22px">
+          Websites and apps are scoped and quoted per project — no two are the same.
+          Book a free audit and we'll tell you exactly what yours needs, what it will cost, and how long it takes.
+        </p>
+        <div class="hero__cta" style="justify-content:center">
+          <a class="btn btn--gold" href="#book">Request a quote</a>
+          <a class="btn btn--ghost" href="#book">Book a free audit</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PILLAR THREE: GROWTH ADD-ONS ===== -->
     <section class="addons" id="addons">
       <div class="section-head reveal">
-        <p class="section-head__eyebrow">À-la-carte</p>
-        <h2 class="section-head__title">Add-ons</h2>
-        <p class="section-head__sub">Bolt these onto any bundle.</p>
+        <p class="section-head__eyebrow">Pillar three</p>
+        <h2 class="section-head__title">Growth Add-ons</h2>
+        <p class="section-head__sub">Bolt these onto any package.</p>
       </div>
 
       <div class="addons__grid">
@@ -197,20 +210,15 @@
           <p class="addon__price">from ₦100k</p>
           <p>A full review of your business with a roadmap of exactly what to automate first.</p>
         </article>
-        <article class="addon reveal">
-          <h3>App Creation</h3>
-          <p class="addon__price">from ₦500k</p>
-          <p>A custom app to serve your customers or run your internal operations.</p>
-        </article>
       </div>
     </section>
 
-    <!-- ===== PRICING ===== -->
+    <!-- ===== PACKAGES ===== -->
     <section class="pricing" id="pricing">
       <div class="section-head reveal">
-        <p class="section-head__eyebrow">Simple pricing</p>
+        <p class="section-head__eyebrow">Packages</p>
         <h2 class="section-head__title">One setup fee + a monthly retainer</h2>
-        <p class="section-head__sub">No hidden costs. Cancel any time.</p>
+        <p class="section-head__sub">No hidden costs. Cancel any time. Every package is set up and managed end-to-end by us.</p>
       </div>
 
       <div class="pricing__grid">
@@ -218,22 +226,47 @@
           <h3>Ignite</h3>
           <p class="price__setup">₦150k one-time setup</p>
           <p class="price__monthly"><span>₦150k</span>/month</p>
+          <ul class="bundle__list">
+            <li><strong>Lead Follow-up Agent</strong> — replies to enquiries in minutes, never lets a lead go cold</li>
+            <li><strong>Booking &amp; Scheduling Agent</strong> — clients book themselves with automatic reminders</li>
+            <li><strong>Social Media Setup &amp; Optimization</strong> — profiles built and primed to convert</li>
+          </ul>
           <a class="btn btn--ghost" href="#book">Get started</a>
         </div>
+
         <div class="price price--popular reveal">
           <div class="price__badge">Most popular</div>
           <h3>Momentum</h3>
           <p class="price__setup">₦250k one-time setup</p>
           <p class="price__monthly"><span>₦350k</span>/month</p>
+          <ul class="bundle__list">
+            <li>✅ <strong>Everything in Ignite</strong></li>
+            <li><strong>Customer Support Chatbot</strong> — answers 24/7 on web + WhatsApp</li>
+            <li><strong>Email &amp; SMS Automation</strong> — welcome, follow-up and win-back sequences</li>
+            <li><strong>Content Automation + Trend Monitor</strong> — consistent posts that stay on-trend</li>
+            <li><strong>Funnels &amp; Landing Pages</strong> — turn clicks into customers</li>
+          </ul>
           <a class="btn btn--gold" href="#book">Get started</a>
         </div>
+
         <div class="price reveal">
           <h3>Dominion</h3>
           <p class="price__setup">₦400k one-time setup</p>
           <p class="price__monthly"><span>₦700k</span>/month</p>
+          <ul class="bundle__list">
+            <li>✅ <strong>Everything in Momentum</strong></li>
+            <li><strong>CRM &amp; Pipeline Setup</strong> — every lead organised, nothing slips through</li>
+            <li><strong>Voice / Phone Receptionist Agent</strong> — never miss a call again</li>
+            <li><strong>AI Video &amp; Faceless Channel</strong> — grow without you on camera</li>
+            <li><strong>Website Creation</strong> — designed, launched and maintained for you</li>
+          </ul>
           <a class="btn btn--ghost" href="#book">Get started</a>
         </div>
       </div>
+
+      <p style="text-align:center;color:var(--muted);font-size:14px;max-width:760px;margin:36px auto 0">
+        Websites, funnels, portals and apps sit outside these packages and are quoted per project — book a free audit and we'll scope yours.
+      </p>
     </section>
 
     <!-- ===== HOW IT WORKS ===== -->
@@ -245,13 +278,13 @@
       <div class="how__steps">
         <div class="step reveal">
           <div class="step__num">1</div>
-          <h3>Free automation audit</h3>
-          <p>We look at your business and find the tasks eating your time — and exactly which ones an AI agent can take over.</p>
+          <h3>Free audit</h3>
+          <p>We look at your business and find the tasks eating your time — and exactly what an agent, a website or an app would fix first.</p>
         </div>
         <div class="step reveal">
           <div class="step__num">2</div>
           <h3>We build &amp; deploy</h3>
-          <p>We set up and launch your agents, wired into the tools you already use. You don't lift a finger.</p>
+          <p>We set up and launch your agents, and design and ship your site or app — wired into the tools you already use. You don't lift a finger.</p>
         </div>
         <div class="step reveal">
           <div class="step__num">3</div>
@@ -279,18 +312,18 @@
         </div>
         <div class="trust__item reveal">
           <h3>We use what we sell</h3>
-          <p>This site and our brand channels run on the same automation stack we deploy for clients.</p>
+          <p>Our own business runs on the automation systems we deploy for clients — every agent we sell you is already working in ours.</p>
         </div>
         <div class="trust__item reveal">
           <h3>Free audit before you pay</h3>
-          <p>See your exact automation plan and expected time savings before spending a kobo.</p>
+          <p>See your exact plan — automations, site, app or all three — and the expected savings before spending a kobo.</p>
         </div>
       </div>
 
       <div class="proof reveal">
         <div class="proof__stat"><span class="proof__num">8,600+</span><span class="proof__label">followers across our channels</span></div>
         <div class="proof__stat"><span class="proof__num">55+</span><span class="proof__label">videos published</span></div>
-        <div class="proof__stat"><span class="proof__num">2</span><span class="proof__label">live sites built in-house</span></div>
+        <div class="proof__stat"><span class="proof__num">3</span><span class="proof__label">live sites built in-house</span></div>
       </div>
 
       <div class="guarantee reveal">
@@ -313,13 +346,17 @@
     <section class="booking" id="book">
       <div class="booking__inner reveal">
         <div class="booking__intro">
-          <h2>Book your free automation audit</h2>
-          <p>Pick a time that works for you — the calendar below is live and confirms instantly. No obligation.</p>
-          <p class="booking__email">Prefer email? <a href="mailto:info.epitomeinnovations@gmail.com">info.epitomeinnovations@gmail.com</a></p>
+          <h2>Book your free audit</h2>
+          <p>Pick a time that works for you — the calendar below is live and confirms instantly. No obligation.
+             Bring your questions about agents, a website, an app, or all three.</p>
+          <p class="booking__email">
+            Prefer to chat? <a id="wa-link" href="mailto:info.epitomeinnovations@gmail.com">Message us on WhatsApp</a>
+            &nbsp;·&nbsp; Or email <a href="mailto:info.epitomeinnovations@gmail.com">info.epitomeinnovations@gmail.com</a>
+          </p>
         </div>
 
         <div class="booking__calendar">
-          <iframe src="https://cal.com/victor-kehinde-m3jfr3?embed=true" width="100%" height="600" frameborder="0" loading="lazy" title="Book a free automation audit with Epitome AI Agency"></iframe>
+          <iframe src="https://cal.com/victor-kehinde-m3jfr3?embed=true" width="100%" height="600" frameborder="0" loading="lazy" title="Book a free audit with Epitome AI Agency"></iframe>
         </div>
       </div>
     </section>
