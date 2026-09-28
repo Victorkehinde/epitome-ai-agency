@@ -233,3 +233,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
    and the heavier card carries the two PDF links without crowding. */
 .agent--wide { grid-column: span 2; }
 @media (max-width: 900px) { .agent--wide { grid-column: auto; } }
+
+
+/* Note under the two app PDFs: who fills the scope sheet in. */
+.agent__note { color: var(--muted); font-size: 13.5px; line-height: 1.55; margin-top: 14px;
+  padding-top: 14px; border-top: 1px solid var(--line); }
