@@ -31,7 +31,7 @@
   onScroll();
 
   // Booking form -> composes a pre-filled email (no backend needed)
-  var EMAIL = "info.epitomeinnovations@gmail.com";
+  var EMAIL = "info@epitomeinnovations.com";
   var form = document.getElementById("booking-form");
   if (form) {
     form.addEventListener("submit", function (e) {
