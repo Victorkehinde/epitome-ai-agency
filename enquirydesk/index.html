@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EnquiryDesk — portal enquiries answered in under a minute | Epitome Innovations</title>
+<meta name="description" content="EnquiryDesk answers your Rightmove, Zoopla, OnTheMarket and PrimeLocation enquiries in under a minute and lets tenants book their own viewing. Free 2-week pilot. Built by Epitome Innovations." />
+<link rel="icon" type="image/jpeg" href="../images/epitome-logo.jpg" />
+<meta property="og:title" content="EnquiryDesk — your portal enquiries, answered in under a minute" />
+<meta property="og:description" content="Answers Rightmove, Zoopla, OnTheMarket and PrimeLocation enquiries in under a minute, then lets the tenant book their own viewing. Free 2-week pilot." />
+<meta property="og:type" content="website" />
+<style>
+  :root{
+    --navy-950:#060f1f; --navy-900:#0a1628; --navy-800:#0d1b2a; --navy-700:#14243c;
+    --gold:#f5b301; --gold-bright:#ffc928; --cream:#f4f0e4; --muted:#a8b3c4;
+    --line:rgba(245,179,1,.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;background:var(--navy-900);
+       color:var(--cream);line-height:1.65;overflow-x:hidden}
+  .gold{color:var(--gold)}
+  a{color:var(--gold);text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(6,15,31,.92);backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.07)}
+  nav .inner{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  nav .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px;color:var(--cream)}
+  nav .brand img{width:30px;height:30px;border-radius:7px;object-fit:cover}
+  nav .spacer{flex:1}
+  nav a.plain{color:var(--muted);font-size:.92rem}
+  nav a.plain:hover{color:var(--cream)}
+  .btn{display:inline-block;padding:13px 22px;border-radius:10px;font-weight:700;font-size:.95rem;
+       border:1px solid transparent;transition:transform .15s ease,background .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn--gold{background:var(--gold);color:var(--navy-950)}
+  .btn--gold:hover{background:var(--gold-bright)}
+  .btn--ghost{border-color:var(--line);color:var(--cream)}
+  .btn--ghost:hover{background:rgba(245,179,1,.08)}
+  .btn--sm{padding:10px 16px;font-size:.88rem}
+  /* hero */
+  header.hero{padding:74px 0 56px;background:
+      radial-gradient(1100px 420px at 78% -8%,rgba(245,179,1,.14),transparent 62%),
+      linear-gradient(180deg,var(--navy-950),var(--navy-900))}
+  .eyebrow{color:var(--gold);font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
+  h1{font-size:clamp(2rem,5.4vw,3.4rem);line-height:1.12;margin:16px 0 18px;letter-spacing:-.5px}
+  .lede{font-size:clamp(1.02rem,2.2vw,1.22rem);color:#d9e0ec;max-width:60ch}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin:28px 0 10px}
+  .micro{color:var(--muted);font-size:.88rem}
+  /* sections */
+  section{padding:52px 0;border-top:1px solid rgba(255,255,255,.06)}
+  h2{font-size:clamp(1.4rem,3.1vw,2rem);margin-bottom:8px;letter-spacing:-.3px}
+  .sub{color:var(--muted);margin-bottom:26px;max-width:70ch}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .card{background:linear-gradient(180deg,var(--navy-800),rgba(13,27,42,.6));
+        border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px}
+  .card h3{font-size:1.03rem;margin-bottom:7px}
+  .card p{color:var(--muted);font-size:.95rem}
+  ol.steps{list-style:none;counter-reset:s}
+  ol.steps li{counter-increment:s;position:relative;padding:14px 0 14px 54px;border-bottom:1px solid rgba(255,255,255,.06)}
+  ol.steps li:last-child{border-bottom:0}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:12px;width:34px;height:34px;
+      border-radius:9px;background:rgba(245,179,1,.14);color:var(--gold);font-weight:700;
+      display:flex;align-items:center;justify-content:center}
+  ol.steps strong{color:var(--cream)}
+  ol.steps span{display:block;color:var(--muted);font-size:.95rem}
+  .two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .not ul,.yes ul{list-style:none;margin-top:10px}
+  .not li,.yes li{position:relative;padding-left:26px;margin-bottom:9px;color:var(--muted)}
+  .not li::before{content:"×";position:absolute;left:0;color:#ff8f8f;font-weight:700}
+  .yes li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+  /* pilot block */
+  .pilot{background:linear-gradient(135deg,rgba(245,179,1,.13),rgba(245,179,1,.03));
+         border:1px solid var(--line);border-radius:16px;padding:26px}
+  .pilot h2{margin-bottom:12px}
+  .pilot .big{font-size:1.5rem;font-weight:800;color:var(--cream);margin-bottom:6px}
+  /* data note */
+  .data{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px}
+  .data p{color:var(--muted);font-size:.95rem;margin-bottom:9px}
+  footer{border-top:1px solid rgba(255,255,255,.08);padding:32px 0 52px;color:var(--muted);font-size:.9rem}
+  footer .row{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+  footer a{color:var(--cream)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="brand" href="../"><img src="../images/epitome-logo.jpg" alt="Epitome Innovations" /><span>EPITOME<span class="gold">·</span>AI</span></a>
+    <span class="spacer"></span>
+    <a class="plain" href="../#agents">What we do</a>
+    <a class="plain" href="https://app.epitomeinnovations.com" target="_blank" rel="noopener">Open the app</a>
+    <a class="btn btn--gold btn--sm" href="mailto:info@epitomeinnovations.com?subject=EnquiryDesk%20free%202-week%20pilot">Start the free pilot</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Enquirydesk · for estate &amp; letting agents</p>
+    <h1>Your portal enquiries,<br /><span class="gold">answered in under a minute.</span></h1>
+    <p class="lede">
+      Every enquiry from Rightmove, Zoopla, OnTheMarket and PrimeLocation gets a reply with your viewing
+      times <strong>before the tenant's kettle has boiled</strong> — and then they book the slot themselves.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn--gold" href="mailto:info@epitomeinnovations.com?subject=EnquiryDesk%20free%202-week%20pilot">Start the free 2-week pilot</a>
+      <a class="btn btn--ghost" href="https://app.epitomeinnovations.com" target="_blank" rel="noopener">See the software</a>
+    </div>
+    <p class="micro">No card. No contract. Two weeks, then you decide.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>The problem is not your service — it's the time</h2>
+    <p class="sub">
+      A tenant enquires at 9pm. Your office opens at 9am. By then they've booked with the agent who
+      answered in ten minutes. It keeps happening to good agencies, because the enquiries arrive whether
+      or not anyone is at a desk.
+    </p>
+    <div class="grid">
+      <div class="card"><h3>Nobody is awake at 9pm</h3><p>The portals deliver enquiries around the clock. A branch that closes at 5:30pm is silent for the exact hours tenants browse.</p></div>
+      <div class="card"><h3>First reply usually wins</h3><p>A tenant messages several agents. The one who replies with real viewing times gets the viewing — the rest get ignored.</p></div>
+      <div class="card"><h3>Your team is showing properties</h3><p>They are not refusing to answer. They are out of the office doing the job you actually pay them for.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What it does</h2>
+    <p class="sub">It sits in front of the inbox you already have. Nothing about your portal subscriptions changes.</p>
+    <ol class="steps">
+      <li><strong>Picks up the enquiry</strong><span>The emails Rightmove, Zoopla, OnTheMarket and PrimeLocation already send your office, plus enquiries that arrive by email.</span></li>
+      <li><strong>Reads it properly</strong><span>The property, the budget, the move-in timing, and whether they are ready to move or just browsing.</span></li>
+      <li><strong>Replies within a minute</strong><span>With your available viewing slots and a link to choose one. In your voice, with wording you approve.</span></li>
+      <li><strong>Lets the tenant book themselves</strong><span>No phone tag, no "we'll get back to you", no double bookings.</span></li>
+      <li><strong>Follows up if they go quiet</strong><span>On a fixed rhythm, on your behalf, until they book or clearly aren't interested.</span></li>
+      <li><strong>Shows you one queue</strong><span>Who's booked, who's warm, who needs a human. Nothing hiding in an inbox.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Straight answers</h2>
+    <p class="sub">You'll ask these before I do. Better you read them here than wonder.</p>
+    <div class="two">
+      <div class="card not">
+        <h3>What it is not</h3>
+        <ul>
+          <li>Not a portal — your Rightmove and Zoopla subscriptions stay exactly as they are</li>
+          <li>Not a CRM — it doesn't replace your property management software, it sits in front of it</li>
+          <li>Not a website — it doesn't touch your site</li>
+          <li>Not automatic cold chasing — replies go in your voice, and you choose the wording</li>
+        </ul>
+      </div>
+      <div class="card yes">
+        <h3>Who it's for</h3>
+        <ul>
+          <li>Independent letting and estate agents with 1–10 branches</li>
+          <li>Agencies taking portal enquiries who lose them to slower replies</li>
+          <li>Teams where a branch manager handles enquiries alongside everything else</li>
+        </ul>
+        <p style="margin-top:12px;color:var(--muted);font-size:.95rem">
+          If you already employ someone whose whole job is answering enquiries instantly, night and day,
+          you probably don't need this.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="pilot">
+      <h2>The free 2-week pilot</h2>
+      <p class="big">Two weeks, your own enquiries, no card.</p>
+      <p class="sub" style="margin-bottom:18px">
+        I'm not asking you to believe a demo. One thing starts it:
+      </p>
+      <ol class="steps" style="margin-bottom:18px">
+        <li><strong>Forward me one enquiry email your portal sent you</strong><span>One email. That's the whole ask — I need to see the format your portal actually sends you.</span></li>
+        <li><strong>I show you what EnquiryDesk replies with</strong><span>On your real enquiry, with your real viewing times and your wording.</span></li>
+        <li><strong>If you like it, we run it live for two weeks</strong><span>You watch the bookings come in. If it isn't earning its place, you switch it off and owe nothing.</span></li>
+      </ol>
+      <div class="cta-row" style="margin:0">
+        <a class="btn btn--gold" href="mailto:info@epitomeinnovations.com?subject=Here%27s%20one%20of%20our%20portal%20enquiries">Send me one portal enquiry</a>
+        <a class="btn btn--ghost" href="https://wa.me/2349056969122" target="_blank" rel="noopener">Message on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Your data</h2>
+    <div class="data">
+      <p><strong>Your agency stays the data controller. EnquiryDesk is the processor.</strong> We handle the enquiry on your instruction and for no other purpose.</p>
+      <p>Enquiries and their replies are stored in our database, hosted in the <strong>London</strong> region, and are never sold, shared or used to contact anyone except the person who made the enquiry — on your behalf.</p>
+      <p>Ask us to delete an agency's data at any time and we remove it. Full written detail is available on request before you start a pilot.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <strong style="color:var(--cream)">Epitome Innovations</strong>
+      <span>A registered Nigerian business (BN 2749585), building since 2019 · Awka, Nigeria</span>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <a href="mailto:info@epitomeinnovations.com">info@epitomeinnovations.com</a>
+      <a href="https://wa.me/2349056969122" target="_blank" rel="noopener">+234 905 696 9122</a>
+      <a href="../">epitomeinnovations.com</a>
+      <a href="https://app.epitomeinnovations.com" target="_blank" rel="noopener">app.epitomeinnovations.com</a>
+    </div>
+    <p style="margin-top:16px;color:var(--muted);font-size:.86rem">
+      © <span id="y">2026</span> Epitome Innovations. EnquiryDesk is our own product, running in production —
+      we use it on our own business.
+    </p>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
