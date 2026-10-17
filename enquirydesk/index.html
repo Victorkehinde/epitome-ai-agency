@@ -47,6 +47,15 @@
   .lede{font-size:clamp(1.02rem,2.2vw,1.22rem);color:#d9e0ec;max-width:60ch}
   .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin:28px 0 10px}
   .micro{color:var(--muted);font-size:.88rem}
+  .demo-form{display:grid;gap:10px;max-width:640px;margin:0 0 8px}
+  .demo-form__row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .demo-form label{font-size:.86rem;color:var(--muted);font-weight:600}
+  .demo-form input,.demo-form textarea{width:100%;margin-top:4px;background:rgba(255,255,255,.04);
+    border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--cream);
+    font-family:inherit;font-size:.95rem}
+  .demo-form input:focus,.demo-form textarea:focus{outline:none;border-color:var(--gold)}
+  .demo-form .btn{justify-self:start;margin-top:6px}
+  @media(max-width:640px){.demo-form__row{grid-template-columns:1fr}}
   /* sections */
   section{padding:52px 0;border-top:1px solid rgba(255,255,255,.06)}
   h2{font-size:clamp(1.4rem,3.1vw,2rem);margin-bottom:8px;letter-spacing:-.3px}
@@ -226,15 +235,29 @@
       </ol>
       <div class="cta-row" style="margin:0 0 14px">
         <a class="btn btn--gold" href="https://wa.me/2349056969122?text=Hi%20Victor%20%E2%80%94%20please%20show%20me%20EnquiryDesk%20on%20one%20of%20our%20portal%20enquiries." target="_blank" rel="noopener">Message on WhatsApp &rarr;</a>
-        <a class="btn btn--ghost" href="mailto:info@epitomeinnovations.com?subject=Here%27s%20one%20of%20our%20portal%20enquiries&amp;body=Hi%20Victor%2C%0A%0AHere%20is%20one%20enquiry%20our%20portal%20sent%20us.%20Please%20show%20me%20what%20EnquiryDesk%20would%20reply.%0A" data-mailto-fallback="https://epitomeinnovations.com/index.html#enquiry-form">Email it to us</a>
+        <a class="btn btn--ghost" href="#demo">Or send it through the form &darr;</a>
       </div>
-      <p class="micro" style="margin-bottom:6px">
-        <strong>Buttons not working?</strong> Some phones and in-app browsers have no email app configured, so the
-        email button can do nothing at all. If that happens, write to
-        <span style="color:var(--cream);font-weight:700">info@epitomeinnovations.com</span>
-        or message <span style="color:var(--cream);font-weight:700">+234 905 696 9122</span> on WhatsApp — and
-        paste one of your portal enquiry emails in.
+
+      <h3 id="demo" style="font-size:1.05rem;margin:18px 0 6px">Send us one portal enquiry</h3>
+      <p class="micro" style="margin:0 0 12px">
+        Paste an enquiry your portal sent you. We reply with exactly what EnquiryDesk would have sent back.
       </p>
+      <form class="demo-form" id="demo-form" novalidate>
+        <div class="demo-form__row">
+          <div>
+            <label for="d-name">Your name</label>
+            <input id="d-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="d-email">Email</label>
+            <input id="d-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <label for="d-paste">Your portal enquiry</label>
+        <textarea id="d-paste" name="message" rows="6" placeholder="Paste the enquiry email here…" required></textarea>
+        <button class="btn btn--gold" type="submit" id="d-send">Show me the reply &rarr;</button>
+        <p class="micro" id="d-status" role="status"></p>
+      </form>
     </div>
   </div>
 </section>
@@ -270,21 +293,56 @@
 </footer>
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 <script>
-/* A mailto: click does nothing at all in a browser with no mail app configured. If no
-   handoff happened within a moment, offer the site's form instead of leaving them stuck. */
-document.querySelectorAll('a[data-mailto-fallback]').forEach(function (a) {
-  a.addEventListener('click', function () {
-    setTimeout(function () {
-      if (document.hidden) return;
-      if (a.parentNode.querySelector('.mailto-note')) return;
-      var n = document.createElement('span');
-      n.className = 'mailto-note';
-      n.innerHTML = ' No email app opened on this device — ' +
-        '<a href="' + a.getAttribute('data-mailto-fallback') + '">send it with the form instead</a>.';
-      a.parentNode.appendChild(n);
-    }, 1300);
+/* The paste-an-enquiry form. It goes straight into EnquiryDesk, so the demo request is an
+   enquiry in our own pipeline — no mail app, no dependency on the device. */
+(function () {
+  var form = document.getElementById('demo-form');
+  if (!form) return;
+  var status = document.getElementById('d-status');
+  var btn = document.getElementById('d-send');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('d-name').value.trim();
+    var email = document.getElementById('d-email').value.trim();
+    var pasted = document.getElementById('d-paste').value.trim();
+
+    if (!name || !email || pasted.length < 20) {
+      status.textContent = 'Please add your name, your email, and the enquiry you want answered.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    status.textContent = '';
+
+    fetch('https://app.epitomeinnovations.com/api/web-form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        need: 'EnquiryDesk demo — portal enquiry pasted',
+        message: pasted
+      })
+    })
+      .then(function (r) { return r.json().catch(function () { return {}; }); })
+      .then(function (res) {
+        if (res && res.ok) {
+          form.innerHTML = '<p style="color:var(--cream);font-size:1rem;line-height:1.6">' +
+            '<strong>Got it.</strong> We will come back to you with exactly how EnquiryDesk ' +
+            'would have answered that enquiry.</p>';
+          return;
+        }
+        throw new Error('failed');
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Show me the reply →';
+        status.textContent = 'That did not send. Message us on WhatsApp and we will pick it up from there.';
+      });
   });
-});
+})();
 </script>
 </body>
 </html>
