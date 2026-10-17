@@ -105,6 +105,25 @@
     });
   }
 
+  // Email links: on a phone or in-app browser with no mail app configured, a mailto: link
+  // does nothing at all — the visitor clicks and nothing happens. If the handoff never
+  // happened, say so and offer the form instead of leaving them stuck.
+  var mailLinks = document.querySelectorAll('a[data-mailto-fallback]');
+  Array.prototype.forEach.call(mailLinks, function (a) {
+    a.addEventListener('click', function () {
+      var target = a.getAttribute('data-mailto-fallback');
+      setTimeout(function () {
+        if (document.hidden) return;                       // the mail app took over
+        if (a.parentNode.querySelector('.mailto-note')) return;
+        var note = document.createElement('span');
+        note.className = 'mailto-note';
+        note.innerHTML = ' No email app opened on this device — ' +
+          '<a href="' + target + '">send it with the form instead</a>.';
+        a.parentNode.appendChild(note);
+      }, 1300);
+    });
+  });
+
   // WhatsApp link — number is set, so #wa-link is upgraded to a click-to-chat link.
   // If the element is not on the page, nothing happens. If JS is off, the anchor keeps
   // its mailto fallback, so the visitor still has a way to reach us.
