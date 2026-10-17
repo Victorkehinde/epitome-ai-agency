@@ -30,31 +30,78 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // Booking form -> composes a pre-filled email (no backend needed)
+  // Enquiry form -> EnquiryDesk (our own product), with an email fallback so a lead is never
+  // lost if the API is unreachable. The form is on the agency site; the enquiry is scored,
+  // acknowledged and answered by the pipeline we sell.
   var EMAIL = "info@epitomeinnovations.com";
-  var form = document.getElementById("booking-form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var name = document.getElementById("f-name").value.trim();
-      var biz = document.getElementById("f-biz").value.trim();
-      var contact = document.getElementById("f-contact").value.trim();
-      var service = document.getElementById("f-service").value;
-      var msg = document.getElementById("f-msg").value.trim();
+  // window.ENQUIRY_ENDPOINT lets a local preview point at the dev server; production uses the live API.
+  var ENQUIRY_ENDPOINT = window.ENQUIRY_ENDPOINT || "https://app.epitomeinnovations.com/api/web-form";
+  var enquiryForm = document.getElementById("enquiry-form");
+  if (enquiryForm) {
+    var statusEl = document.getElementById("f-status");
+    var sendBtn = document.getElementById("f-send");
 
-      var subject = "Free Automation Audit — " + (name || "New enquiry");
+    var setStatus = function (html) { if (statusEl) statusEl.innerHTML = html; };
+
+    var fallbackToEmail = function (data) {
+      var subject = "Website enquiry — " + (data.name || "New enquiry");
       var body = [
-        "Name: " + name,
-        "Business: " + (biz || "—"),
-        "Contact: " + contact,
-        "Interested in: " + service,
+        "Name: " + (data.name || ""),
+        "Business: " + (data.company || ""),
+        "Email: " + (data.email || ""),
+        "Phone: " + (data.phone || ""),
+        "Interested in: " + (data.need || ""),
         "",
-        msg || "(no message)"
+        data.message || ""
       ].join("\n");
-
       window.location.href = "mailto:" + EMAIL +
         "?subject=" + encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
+    };
+
+    enquiryForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var val = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; };
+      var data = {
+        name: val("f-name"),
+        company: val("f-biz"),
+        email: val("f-email"),
+        phone: val("f-phone"),
+        need: val("f-service"),
+        message: val("f-msg"),
+        website: val("f-website")   // honeypot — a person leaves this empty
+      };
+
+      if (!data.name || (!data.email && !data.phone) || data.message.length < 10) {
+        setStatus("Please add your name, an email or phone number, and a line or two about what you need.");
+        return;
+      }
+
+      if (sendBtn) { sendBtn.disabled = true; sendBtn.textContent = "Sending…"; }
+      setStatus("Sending…");
+
+      fetch(ENQUIRY_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (res) {
+          if (res && res.ok) {
+            enquiryForm.innerHTML =
+              '<p class="booking__note" style="text-align:left;font-size:15px;color:var(--cream)">' +
+              '<strong>Thank you — it has arrived.</strong><br>' +
+              'We reply to every enquiry within minutes, and a person will come back to you on this.' +
+              '</p>';
+            return;
+          }
+          throw new Error((res && res.error) || "failed");
+        })
+        .catch(function () {
+          if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = "Send — we answer in minutes"; }
+          setStatus("We could not send that just now — opening your email app instead so nothing is lost.");
+          fallbackToEmail(data);
+        });
     });
   }
 
