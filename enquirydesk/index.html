@@ -226,7 +226,7 @@
       </ol>
       <div class="cta-row" style="margin:0 0 14px">
         <a class="btn btn--gold" href="https://wa.me/2349056969122?text=Hi%20Victor%20%E2%80%94%20please%20show%20me%20EnquiryDesk%20on%20one%20of%20our%20portal%20enquiries." target="_blank" rel="noopener">Message on WhatsApp &rarr;</a>
-        <a class="btn btn--ghost" href="mailto:info@epitomeinnovations.com?subject=Here%27s%20one%20of%20our%20portal%20enquiries&amp;body=Hi%20Victor%2C%0A%0AHere%20is%20one%20enquiry%20our%20portal%20sent%20us.%20Please%20show%20me%20what%20EnquiryDesk%20would%20reply.%0A">Email it to us</a>
+        <a class="btn btn--ghost" href="mailto:info@epitomeinnovations.com?subject=Here%27s%20one%20of%20our%20portal%20enquiries&amp;body=Hi%20Victor%2C%0A%0AHere%20is%20one%20enquiry%20our%20portal%20sent%20us.%20Please%20show%20me%20what%20EnquiryDesk%20would%20reply.%0A" data-mailto-fallback="https://epitomeinnovations.com/index.html#enquiry-form">Email it to us</a>
       </div>
       <p class="micro" style="margin-bottom:6px">
         <strong>Buttons not working?</strong> Some phones and in-app browsers have no email app configured, so the
@@ -269,5 +269,22 @@
   </div>
 </footer>
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script>
+/* A mailto: click does nothing at all in a browser with no mail app configured. If no
+   handoff happened within a moment, offer the site's form instead of leaving them stuck. */
+document.querySelectorAll('a[data-mailto-fallback]').forEach(function (a) {
+  a.addEventListener('click', function () {
+    setTimeout(function () {
+      if (document.hidden) return;
+      if (a.parentNode.querySelector('.mailto-note')) return;
+      var n = document.createElement('span');
+      n.className = 'mailto-note';
+      n.innerHTML = ' No email app opened on this device — ' +
+        '<a href="' + a.getAttribute('data-mailto-fallback') + '">send it with the form instead</a>.';
+      a.parentNode.appendChild(n);
+    }, 1300);
+  });
+});
+</script>
 </body>
 </html>
