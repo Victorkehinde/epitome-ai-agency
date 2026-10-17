@@ -207,8 +207,34 @@ section[id], div[id], h2[id], h3[id] { scroll-margin-top: 88px; }
 .booking__email { margin-top: 16px; font-size: 14px; color: var(--muted); }
 .booking__email a { color: var(--gold-bright); }
 
+/* Shown only when a mailto: click produced no handoff (no mail app on the device). */
+.mailto-note { display: inline-block; margin-top: 6px; font-size: 13px; color: var(--muted); }
+.mailto-note a { color: var(--gold-bright); text-decoration: underline; }
+
 /* ---------- FOOTER ---------- */
 .footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+/* White-label route. Deliberately calm — a band in the footer, not a hero button — but big
+   enough that an agency owner finds it without scrolling to the last line of the page. */
+.partner-band {
+  max-width: 780px; margin: 0 auto 30px; padding: 20px 24px;
+  border: 1px solid var(--line); border-radius: 14px; background: var(--navy-800);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  text-align: left;
+}
+.partner-band p { margin: 0; max-width: 48ch; color: var(--muted); font-size: 14px; }
+.partner-band p strong { color: var(--cream); }
+.partner-band .btn { margin: 0; padding: 10px 16px; font-size: 14px; }
+
+/* The same route, mentioned once mid-page so it is findable without reaching the footer. */
+.partner-note { max-width: 74ch; margin: -16px auto 30px; text-align: center; font-size: 14px; color: #7f8b9d; }
+.partner-note a { color: var(--muted); text-decoration: underline; }
+.partner-note a:hover { color: var(--gold-bright); }
+
+@media (max-width: 900px) {
+  .partner-band { flex-direction: column; text-align: center; }
+  .partner-band p { max-width: none; }
+}
 
 /* ---------- REVEAL ---------- */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
