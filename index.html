@@ -411,10 +411,52 @@
       <div class="booking__inner reveal">
         <div class="booking__intro">
           <h2>Book your free audit</h2>
-          <p>Pick a time that works for you — the calendar below is live and confirms instantly. No obligation.
+          <p>Pick a time that works for you — the calendar beside this is live and confirms instantly. No obligation.
              Bring your questions about agents, a website, an app, or all three.</p>
+
+          <!-- The enquiry lands in EnquiryDesk, our own product: scored, answered in minutes,
+               and a call offered. If it ever fails, the form falls back to email so no lead is lost. -->
+          <form class="booking__form" id="enquiry-form" novalidate>
+            <label for="f-name">Your name <span>*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Dana Whitfield" required>
+
+            <label for="f-biz">Agency or business</label>
+            <input id="f-biz" name="company" type="text" autocomplete="organization" placeholder="Northfield Lettings">
+
+            <label for="f-email">Email <span>*</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+
+            <label for="f-phone">Phone (optional)</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="Best number to reach you">
+
+            <label for="f-service">What do you need?</label>
+            <select id="f-service" name="need">
+              <option value="">Choose one&hellip;</option>
+              <option>EnquiryDesk — answer every enquiry in minutes</option>
+              <option>AI automation for my business</option>
+              <option>A new website</option>
+              <option>An app</option>
+              <option>Something else</option>
+            </select>
+
+            <label for="f-msg">What is happening right now? <span>*</span></label>
+            <textarea id="f-msg" name="message" rows="4" placeholder="What is happening right now, and what would you like working better?" required></textarea>
+
+            <!-- Honeypot: hidden from people, irresistible to bots. -->
+            <div class="hp" aria-hidden="true">
+              <label for="f-website">Website</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button class="btn btn--gold" type="submit" id="f-send">Send — we answer in minutes</button>
+            <p class="booking__note" id="f-status">
+              Goes straight into EnquiryDesk, answered by a person from
+              <a href="mailto:info@epitomeinnovations.com">info@epitomeinnovations.com</a>.
+            </p>
+          </form>
+
           <p class="booking__email">
-            Prefer to chat? <a id="wa-link" href="mailto:info@epitomeinnovations.com">Message us on WhatsApp</a>
+            Prefer to talk? <a id="wa-link" href="https://wa.me/2349056969122?text=Hi%21%20I%27d%20like%20to%20book%20a%20free%20audit." rel="noopener">Message us on WhatsApp</a>
             &nbsp;·&nbsp; Or email <a href="mailto:info@epitomeinnovations.com">info@epitomeinnovations.com</a>
           </p>
         </div>
