@@ -34,6 +34,13 @@
        border:1px solid transparent;transition:transform .15s ease,background .15s ease}
   .btn:hover{transform:translateY(-1px)}
   .btn--gold{background:var(--gold);color:var(--navy-950)}
+  /* On a phone the product nav keeps only what matters: the way home and the trial button. */
+  @media (max-width:700px){
+    nav .inner{gap:10px}
+    nav a.plain{display:none}
+    nav .brand span{font-size:.9rem}
+    nav .btn--sm{padding:9px 14px;font-size:.88rem}
+  }
   .btn--gold:hover{background:var(--gold-bright)}
   .btn--ghost{border-color:var(--line);color:var(--cream)}
   .btn--ghost:hover{background:rgba(245,179,1,.08)}
@@ -97,8 +104,9 @@
   <div class="inner">
     <a class="brand" href="../"><img src="../images/epitome-logo.jpg" alt="Epitome Innovations" /><span>EPITOME<span class="gold">·</span>AI</span></a>
     <span class="spacer"></span>
-    <a class="plain" href="../#agents">What we do</a>
-    <a class="plain" href="https://app.epitomeinnovations.com" target="_blank" rel="noopener">Open the app</a>
+    <a class="plain" href="../#pillars">What we do</a>
+    <a class="plain" href="https://victorkehinde.github.io/epitome-ai-mastery/">AI Mastery</a>
+    <a class="plain" href="https://app.epitomeinnovations.com" target="_blank" rel="noopener">Client login</a>
     <a class="btn btn--gold btn--sm" href="#pilot">Start the 14-day trial</a>
   </div>
 </nav>

@@ -19,18 +19,52 @@
   <nav class="nav" id="nav" aria-label="Main navigation">
     <div class="nav__inner">
       <a class="nav__brand" href="#top">
-        <img src="images/epitome-logo.jpg" alt="Epitome AI Agency logo" />
-        <span>EPITOME<span class="gold">·</span>AI</span>
+        <img src="images/epitome-logo.jpg" alt="" />
+        <span>EPITOME<span class="gold">&middot;</span>AI</span>
       </a>
-      <ul class="nav__links">
-        <li><a href="#pillars">What we do</a></li>
-        <li><a href="#agents">AI Agents</a></li>
-        <li><a href="#build">Websites, Apps &amp; Software</a></li>
-        <li><a href="#pricing">Packages</a></li>
-        <li><a href="#how">How it works</a></li>
-        <li><a href="enquirydesk/">EnquiryDesk</a></li>
-        <li><a href="#book" class="nav__cta">Book a free audit</a></li>
-      </ul>
+
+      <!-- Mobile only: without this button the whole menu was invisible on a phone. -->
+      <button class="nav__toggle" id="nav-toggle" type="button"
+              aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+      </button>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__links">
+          <li><a href="#pillars">Services</a></li>
+
+          <!-- The umbrella: three products, each its own thing, one place to find them. -->
+          <li class="nav__has-drop">
+            <button class="nav__dropbtn" id="nav-products" type="button"
+                    aria-expanded="false" aria-controls="nav-products-menu">
+              Products
+              <svg class="nav__chev" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="nav__drop" id="nav-products-menu" role="group" aria-label="Products">
+              <a href="enquirydesk/">
+                <strong>EnquiryDesk</strong>
+                <span>Portal enquiries answered in under a minute</span>
+              </a>
+              <a href="https://victorkehinde.github.io/epitome-ai-mastery/">
+                <strong>AI Mastery</strong>
+                <span>Three-evening live class, &pound;8,000 to build your own agent</span>
+              </a>
+              <a href="https://app.epitomeinnovations.com">
+                <strong>Client login</strong>
+                <span>Open your EnquiryDesk workspace</span>
+              </a>
+            </div>
+          </li>
+
+          <li><a href="#how">Process</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li class="nav__cta-item"><a href="#book" class="nav__cta">Book a free audit</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -478,9 +512,45 @@
       <p><strong>Running your own agency?</strong> Deliver this under your own brand — white-label EnquiryDesk, your logo, your clients.</p>
       <a class="btn btn--ghost" href="partners.html">See the white-label option &rarr;</a>
     </div>
-    <p>© <span id="year"></span> Epitome AI Agency · A division of Epitome Innovations</p>
+
+    <!-- One umbrella, three clearly separate things: the products sit in their own column and
+         keep their own names, so nothing here reads as one merged product. -->
+    <div class="foot-grid">
+      <div class="foot-col foot-col--brand">
+        <a class="nav__brand" href="#top">
+          <img src="images/epitome-logo.jpg" alt="" />
+          <span>EPITOME<span class="gold">&middot;</span>AI</span>
+        </a>
+        <p>AI systems, websites and software for businesses that cannot afford to leave a customer waiting.</p>
+      </div>
+
+      <div class="foot-col">
+        <h4>Products</h4>
+        <a href="enquirydesk/">EnquiryDesk</a>
+        <a href="https://victorkehinde.github.io/epitome-ai-mastery/">AI Mastery</a>
+        <a href="https://app.epitomeinnovations.com">Client login</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#pillars">Services</a>
+        <a href="#how">Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#book">Book a free audit</a>
+      </div>
+
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@epitomeinnovations.com">info@epitomeinnovations.com</a>
+        <a href="https://wa.me/2349056969122" target="_blank" rel="noopener">WhatsApp +234 905 696 9122</a>
+        <span>Awka, Anambra State, Nigeria</span>
+      </div>
+    </div>
+
+    <p class="foot-legal">&copy; <span id="year"></span> Epitome AI Agency &middot; A division of Epitome Innovations</p>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/nav.js"></script>
 </body>
 </html>

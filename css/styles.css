@@ -39,7 +39,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 html { scroll-padding-top: 88px; }
 section[id], div[id], h2[id], h3[id] { scroll-margin-top: 88px; }
 .nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   backdrop-filter: blur(10px);
   background: rgba(6, 15, 31, 0.72);
   border-bottom: 1px solid var(--line);
@@ -50,11 +50,51 @@ section[id], div[id], h2[id], h3[id] { scroll-margin-top: 88px; }
 }
 .nav__brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--cream); font-weight: 700; letter-spacing: 1.5px; font-size: 15px; }
 .nav__brand img { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold); }
-.nav__links { list-style: none; display: flex; gap: 22px; align-items: center; }
-.nav__links a { color: var(--muted); text-decoration: none; font-size: 14px; letter-spacing: 0.5px; transition: color 0.2s; }
-.nav__links a:hover { color: var(--gold-bright); }
-.nav__cta { color: var(--gold-bright) !important; border: 1px solid var(--line); padding: 8px 16px; border-radius: 30px; }
-.nav__cta:hover { border-color: var(--gold); }
+.nav__menu { display: flex; align-items: center; }
+.nav__links { list-style: none; display: flex; gap: 8px; align-items: center; margin: 0; padding: 0; }
+.nav__links > li > a,
+.nav__dropbtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--muted); background: none; border: 0; cursor: pointer;
+  font-family: inherit; font-size: 13.5px; letter-spacing: 0.4px;
+  padding: 9px 13px; border-radius: 8px;
+  text-decoration: none; transition: color .18s, background .18s;
+}
+.nav__links > li > a:hover,
+.nav__dropbtn:hover,
+.nav__has-drop.is-open .nav__dropbtn { color: var(--gold-bright); background: rgba(245,179,1,.07); }
+.nav__chev { transition: transform .18s; opacity: .7; }
+.nav__has-drop.is-open .nav__chev { transform: rotate(180deg); }
+
+.nav__has-drop { position: relative; }
+.nav__drop {
+  position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+  min-width: 320px; padding: 8px;
+  background: rgba(10,22,40,.97); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.55);
+  display: none; flex-direction: column; gap: 2px;
+}
+.nav__has-drop.is-open .nav__drop { display: flex; }
+.nav__drop a { display: block; padding: 11px 13px; border-radius: 9px; text-decoration: none; }
+.nav__drop a:hover { background: rgba(245,179,1,.08); }
+.nav__drop strong { display: block; color: var(--cream); font-size: 14px; letter-spacing: .2px; }
+.nav__drop span { display: block; color: var(--muted); font-size: 12.5px; line-height: 1.45; margin-top: 3px; }
+
+.nav__cta { color: var(--gold-bright) !important; border: 1px solid var(--line);
+  padding: 9px 18px !important; border-radius: 30px; white-space: nowrap; }
+.nav__cta:hover { border-color: var(--gold); background: rgba(245,179,1,.08); }
+.nav__cta-item { margin-left: 6px; }
+
+/* Hamburger — hidden on desktop, and the menu is always reachable on a phone. */
+.nav__toggle {
+  display: none; width: 42px; height: 38px; padding: 0;
+  background: none; border: 1px solid var(--line); border-radius: 9px; cursor: pointer;
+  flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+}
+.nav__bar { display: block; width: 18px; height: 1.8px; background: var(--cream); transition: transform .2s, opacity .2s; }
+.nav.is-open .nav__toggle .nav__bar:nth-child(1) { transform: translateY(6.8px) rotate(45deg); }
+.nav.is-open .nav__toggle .nav__bar:nth-child(2) { opacity: 0; }
+.nav.is-open .nav__toggle .nav__bar:nth-child(3) { transform: translateY(-6.8px) rotate(-45deg); }
 
 /* ---------- HERO ---------- */
 .hero {
@@ -242,7 +282,35 @@ section[id], div[id], h2[id], h3[id] { scroll-margin-top: 88px; }
   .bundles, .pricing__grid, .how__steps, .agents__grid, .addons__grid { grid-template-columns: 1fr; }
   .trust__grid, .results__grid { grid-template-columns: 1fr; }
   .booking__inner { grid-template-columns: 1fr; padding: 32px 24px; }
-  .nav__links { display: none; }
+  .nav__toggle { display: inline-flex; }
+  .nav__inner { padding: 12px 18px; }
+  .nav__menu {
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 210;
+    display: none; background: #070f1d;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 14px 20px; max-height: calc(100vh - 66px); overflow-y: auto;
+    box-shadow: 0 18px 40px rgba(0,0,0,.5);
+  }
+  .nav.is-open .nav__menu { display: block; }
+  .nav__links { flex-direction: column; align-items: stretch; gap: 2px; }
+  .nav__links > li > a,
+  .nav__dropbtn {
+    width: 100%; justify-content: space-between;
+    font-size: 16px; padding: 14px 12px; border-radius: 10px;
+  }
+  .nav__drop {
+    position: static; transform: none; min-width: 0; margin: 4px 0 6px;
+    background: rgba(255,255,255,.03); box-shadow: none;
+  }
+  .nav__drop strong { font-size: 15px; }
+  .nav__drop span { font-size: 13px; }
+  .nav__cta-item { margin: 10px 0 0; }
+  .nav__cta {
+    display: flex !important; justify-content: center !important;
+    padding: 15px 18px !important; font-size: 15px !important;
+    background: var(--gold) !important; color: #0a1628 !important;
+    border: 0 !important; font-weight: 700; letter-spacing: .2px;
+  }
   /* The 100px section padding above the form card reads as dead space on a phone:
      two stacked paddings produced a 128px gap. Tightened for mobile only. */
   .trust { padding-bottom: 44px; }
@@ -271,3 +339,24 @@ section[id], div[id], h2[id], h3[id] { scroll-margin-top: 88px; }
 /* Note under the two app PDFs: who fills the scope sheet in. */
 .agent__note { color: var(--muted); font-size: 13.5px; line-height: 1.55; margin-top: 14px;
   padding-top: 14px; border-top: 1px solid var(--line); }
+
+/* ---------- FOOTER UMBRELLA ---------- */
+.foot-grid {
+  max-width: 1120px; margin: 44px auto 0; padding: 0 24px;
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 34px;
+}
+.foot-col { display: flex; flex-direction: column; gap: 9px; }
+.foot-col h4 {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 4px; font-weight: 700;
+}
+.foot-col a, .foot-col span { color: var(--muted); font-size: 14px; text-decoration: none; line-height: 1.5; }
+.foot-col a:hover { color: var(--gold-bright); }
+.foot-col--brand p { color: var(--muted); font-size: 14px; line-height: 1.6; margin: 10px 0 0; max-width: 320px; }
+.foot-col--brand .nav__brand { font-size: 14px; }
+.foot-col--brand .nav__brand img { width: 30px; height: 30px; }
+.foot-legal { margin-top: 30px; }
+@media (max-width: 900px) {
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 32px; }
+  .foot-col--brand { grid-column: 1 / -1; }
+}
