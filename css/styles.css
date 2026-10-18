@@ -360,3 +360,34 @@ section[id], div[id], h2[id], h3[id] { scroll-margin-top: 88px; }
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 32px; }
   .foot-col--brand { grid-column: 1 / -1; }
 }
+
+/* ---------- WHAT WE'VE BUILT (umbrella band) ---------- */
+.products { padding: 84px 0 64px; }
+.products .section-head { max-width: 1120px; margin: 0 auto 34px; padding: 0 24px; }
+.products__grid {
+  max-width: 1120px; margin: 0 auto; padding: 0 24px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+}
+.prod {
+  position: relative; display: flex; flex-direction: column;
+  padding: 26px 24px 22px; border-radius: 16px; text-decoration: none;
+  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+  border: 1px solid var(--line); transition: transform .22s, border-color .22s, box-shadow .22s;
+}
+.prod:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 22px 44px rgba(0,0,0,.42); }
+.prod__pill {
+  align-self: flex-start; font-size: 10.5px; letter-spacing: 1.6px; text-transform: uppercase;
+  font-weight: 700; color: var(--muted); border: 1px solid var(--line);
+  padding: 5px 10px; border-radius: 20px; margin-bottom: 16px;
+}
+.prod__pill--live { color: var(--gold-bright); border-color: rgba(245,179,1,.4); background: rgba(245,179,1,.07); }
+.prod h3 { font-size: 21px; color: var(--cream); margin: 0 0 10px; letter-spacing: .2px; }
+.prod p { color: var(--muted); font-size: 14.5px; line-height: 1.6; margin: 0 0 20px; flex: 1; }
+.prod__link { color: var(--gold-bright); font-size: 14px; font-weight: 600; letter-spacing: .3px; }
+.prod:hover .prod__link { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 900px) {
+  .products { padding: 60px 0 44px; }
+  .products__grid { grid-template-columns: 1fr; gap: 14px; }
+  .prod { padding: 22px 20px 18px; }
+  .prod h3 { font-size: 19px; }
+}
