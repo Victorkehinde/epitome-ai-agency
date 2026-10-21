@@ -252,6 +252,11 @@
  Paste one. We reply with exactly what EnquiryDesk would have sent back.
  </p>
  <form class="demo-form" id="demo-form" novalidate>
+ <!-- Honeypot: hidden from people, irresistible to bots. Filled = silently dropped. -->
+ <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">
+ <label for="d-website">Website</label>
+ <input id="d-website" name="website" type="text" tabindex="-1" autocomplete="off">
+ </div>
  <div class="demo-form__row">
  <div>
  <label for="d-name">Your name</label>
@@ -330,7 +335,8 @@
  body: JSON.stringify({
  name: name,
  email: email,
- need: 'EnquiryDesk demo — portal enquiry pasted',
+ need: 'EnquiryDesk demo, portal enquiry pasted',
+ website: (document.getElementById('d-website') || {}).value || '',
  message: pasted
  })
  })
